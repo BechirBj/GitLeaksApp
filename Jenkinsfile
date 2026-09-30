@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Secret Scanning - Gitleaks'){
           steps{
-           sh 'gitleaks detect --no-banner'
+           sh 'gitleaks detect -v --no-banner'
 	   }
 	}	    
 }
