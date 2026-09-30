@@ -16,25 +16,31 @@ pipeline {
 
         stage('Secret Scanning - Gitleaks') {
             steps {
-                sh '''
-                    gitleaks detect                         --config .gitleaks.toml                         --no-banner                         -v
-                '''
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    sh '''
+                        gitleaks detect                             --config .gitleaks.toml                             --no-banner                             -v
+                    '''
+                }
             }
         }
 
         stage('SAST - Bandit') {
             steps {
-                sh '''
-                    .venv/bin/bandit app.py
-                '''
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    sh '''
+                        .venv/bin/bandit app.py
+                    '''
+                }
             }
         }
 
         stage('SCA - Dependency Scan') {
             steps {
-                sh '''
-                    .venv/bin/pip-audit
-                '''
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    sh '''
+                        .venv/bin/pip-audit
+                    '''
+                }
             }
         }
 
