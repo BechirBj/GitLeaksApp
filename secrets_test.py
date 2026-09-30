@@ -1,5 +1,6 @@
-MYCOMPANY_KEY = MYCOMPANY_abc123XYZ789
-GITHUB_KEY = ghp_1234567890abcdefghijklmnopqrstuvwxyz1234
+def main():
+    print("Secret scanning test")
 
-print(Secret scanning test)
 
+if __name__ == "__main__":
+    main()

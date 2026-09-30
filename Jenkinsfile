@@ -8,7 +8,8 @@ pipeline {
                 sh '''
                     python3 -m venv .venv
                     .venv/bin/python -m pip install --upgrade pip
-                    .venv/bin/pip install bandit
+                    .venv/bin/pip install -r requirements.txt
+                    .venv/bin/pip install bandit pip-audit
                 '''
             }
         }
@@ -25,6 +26,14 @@ pipeline {
             steps {
                 sh '''
                     .venv/bin/bandit app.py
+                '''
+            }
+        }
+
+        stage('SCA - Dependency Scan') {
+            steps {
+                sh '''
+                    .venv/bin/pip-audit
                 '''
             }
         }
