@@ -27,6 +27,11 @@ pipeline {
                 '''
             }
         }
-    }
+        stage('Secret Scanning - Gitleaks'){
+          steps{
+           sh 'gitleaks detect --no-banner'
+	   }
+	}	    
+}
 }
 
