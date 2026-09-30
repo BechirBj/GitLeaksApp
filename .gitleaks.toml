@@ -1,3 +1,6 @@
+[extend]
+useDefault = true
+
 [[rules]]
 id = "mycompany-api-key"
 description = "MyCompany API key"
