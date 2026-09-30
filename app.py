@@ -1,3 +1,3 @@
-API_KEY = "ghp_FAKE123456789abcdef"
+API_KEY = "ghp_1234567890abcdefghijklmnopqrstuvwxyz1234"
 
 print("Application started")
